@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="stylesheet" href="../public/style.css"> 
+</head>
+<body>
+    <div class="container">
+        <h1>Payment System</h1>
+        <form action="/send-mail" method="post">
+            <label for="customerEmail">Enter Your Email to Receive the Bill:</label>
+            <input type="email" name="customerEmail" id="customerEmail" required><br>
+            <label>Ammount:</label>
+            <div class="radio-group">
+                <input type="radio" name="ammount" value="30" id="ammount30">
+                <label for="ammount30">30</label>
+                <input type="radio" name="ammount" value="35" id="ammount35">
+                <label for="ammount35">35</label>
+            </div>
+            <button type="submit">Click to Get the QR Code</button>
+        </form>
+
+        <% if (flag === 1) { %>
+            <div class="qr-code">
+                <h1>Scan to Pay</h1>
+                <img src="/public/-0u90u.jpeg" alt="Payment QR Code" height="300" width="300">
+                <p class="note">Scan the QR code to make a payment. Once the payment is successful, you will receive your bill.</p>
+            </div>
+        <% } else { %>
+            <h2>QR Code Will Appear Here After the Email is Provided</h2>
+        <% } %>
+    </div>
+</body>
+</html>
