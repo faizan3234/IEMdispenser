@@ -7,12 +7,12 @@ app.set('view engine', 'ejs');
 
 app.use('/public/', express.static('./public'));
 
-// Replace with your email credentials
+// Directly include credentials (not recommended for production)
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'khanfaizan3234@gmail.com',    // Your email
-        pass: 'vpra mojw jrup vckn'          // Your email password
+        user: 'khanfaizan3234@gmail.com',
+        pass: 'vpra mojw jrup vckn'  // Your email password
     }
 });
 
@@ -29,11 +29,11 @@ app.get('/newpage', (req, res) => {
 app.post('/send-mail', async (req, res) => {
     const flag = 0;
     const customerEmail = req.body.customerEmail;
-    const ammount = req.body.ammount; // Fixed spelling from 'ammount' to 'amount'
+    const amount = req.body.amount; // Fixed spelling from 'ammount' to 'amount'
     console.log(req.body);
     console.log(customerEmail);
 
-    var mailOptions = {
+    const mailOptions = {
         from: 'khanfaizan3234@gmail.com',
         to: customerEmail,
         subject: 'Your Bill from Coke Dispenser',
@@ -89,7 +89,7 @@ app.post('/send-mail', async (req, res) => {
                     <h1>Thank You for Your Purchase!</h1>
                     <p>Dear Customer,</p>
                     <p>We appreciate your business with our Coke dispenser service. Here are the details of your recent transaction:</p>
-                    <p><strong>Grand Total: </strong>₹${ammount}</p>
+                    <p><strong>Grand Total: </strong>₹${amount}</p>
                     <p>If you have any questions or need further assistance, please do not hesitate to contact us (9163606455).</p>
                     <p>Thank you for choosing us!</p>
                     <div class="footer">
@@ -114,3 +114,4 @@ app.post('/send-mail', async (req, res) => {
 app.listen(3000, () => {
     console.log('Server started on port 3000');
 });
+  
