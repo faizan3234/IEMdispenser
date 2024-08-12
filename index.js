@@ -1,7 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const PDFDocument = require('pdfkit');
-const fs = require('fs');
 const nodemailer = require('nodemailer');
 
 const app = express();
